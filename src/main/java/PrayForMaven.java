@@ -1,5 +1,5 @@
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
@@ -13,10 +13,16 @@ public class PrayForMaven {
 
         System.out.println("Fuck mvn!");
         String chrome_driver_path = "C:\\Webdrivers\\chromedriver.exe";
+        String firefox_driver_path = "C:\\Webdrivers\\geckodriver.exe";
+
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 
         System.setProperty("webdriver.chrome.driver", chrome_driver_path);
-        driver = new ChromeDriver();
+        System.setProperty("webdriver.gecko.driver",firefox_driver_path);
+
+        //driver = new ChromeDriver();
+        driver = new FirefoxDriver();
+
         driver.navigate().to("http://google.com");
         driver.close();
 
