@@ -1,4 +1,6 @@
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 /**
@@ -14,21 +16,29 @@ public class PrayForMaven {
         String firefoxDriverPath = "/Users/smiroshn/IdeaProjects/SeleniumAdvanced/src/main/resources/geckodriver";
         String safariDriverPath = "/Users/smiroshn/IdeaProjects/SeleniumAdvanced/src/main/resources/";
 
-        Browser browser;
+        Browsers browser;
 
-        String chosenBrowser = Browser.pickBrowser().toString();
+        String chosenBrowser = Browsers.pickBrowser().toString();
 
         if (chosenBrowser.equals("Firefox")) {
-            System.out.println("Firefox!");
+            System.out.println("///---------DEBUG::Firefox!---------///");
             System.setProperty("webdriver.gecko.driver", firefoxDriverPath);
+            driver = new FirefoxDriver();
+            driver.get("http://google.com");
+            driver.close();
+
         } else if (chosenBrowser.equals("Safari")) {
-            System.out.println("Safari! driver missing !");
+            System.out.println("///---------DEBUG::Safari!---------///");
             driver = new SafariDriver();
             driver.get("http://google.com");
             driver.close();
+
         } else if (chosenBrowser.equals("Chrome")) {
             System.setProperty("webdriver.chrome.driver", chromeDriverPath);
-            System.out.println("Chrome!");
+            System.out.println("///---------DEBUG::Chrome!---------///");
+            driver = new ChromeDriver();
+
+
         }
 
 //        DesiredCapabilities capabilities = DesiredCapabilities.chrome();
